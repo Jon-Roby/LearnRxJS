@@ -14,12 +14,10 @@ Array.prototype.reduce = function(combiner, initialValue) {
 		if (arguments.length === 1) {
 			counter = 1;
 			accumulatedValue = this[0];
-		}
-		else if (arguments.length >= 2) {
+		} else if (arguments.length >= 2) {
 			counter = 0;
 			accumulatedValue = initialValue;
-		}
-		else {
+		} else {
 			throw "Invalid arguments.";
 		}
 
