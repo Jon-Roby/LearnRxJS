@@ -78,7 +78,5 @@
     });
   }); // Complete this expression!
 
-  var arr1 = [{"id":675465,"title":"Fracture","boxart":"http://cdn-0.nflximg.com/images/2891/Fracture150.jpg"},{"id":65432445,"title":"The Chamber","boxart":"http://cdn-0.nflximg.com/images/2891/TheChamber150.jpg"},{"id":70111470,"title":"Die Hard","boxart":"http://cdn-0.nflximg.com/images/2891/DieHard150.jpg"},{"id":654356453,"title":"Bad Boys","boxart":"http://cdn-0.nflximg.com/images/2891/BadBoys150.jpg"}]
-  var arr2 = [{"id":675465,"title":"Fracture","url":"http://cdn-0.nflximg.com/images/2891/Fracture150.jpg"},{"id":65432445,"title":"The Chamber","url":"http://cdn-0.nflximg.com/images/2891/TheChamber150.jpg"},{"id":70111470,"title":"Die Hard","url":"http://cdn-0.nflximg.com/images/2891/DieHard150.jpg"},{"id":654356453,"title":"Bad Boys","url":"http://cdn-0.nflximg.com/images/2891/BadBoys150.jpg"}]
-
+  
 })();
