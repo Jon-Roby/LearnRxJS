@@ -1,4 +1,42 @@
-function() {
+Array.prototype.concatAll = function() {
+  var results = [];
+  this.forEach(function(subArray) {
+    subArray.forEach(function(item) {
+      results.push(item);
+    });
+  });
+  return results;
+}
+
+Array.prototype.concatMap = function(projectionFunctionThatReturnsArray) {
+	return this.
+		map(function(item) {
+      return projectionFunctionThatReturnsArray(item);
+			// ------------   INSERT CODE HERE!  ----------------------------
+			// Apply the projection function to each item. The projection
+			// function will return an new child array. This will create a
+			// two-dimensional array.
+			// ------------   INSERT CODE HERE!  ----------------------------
+		}).
+		// apply the concatAll function to flatten the two-dimensional array
+		concatAll();
+};
+
+Array.zip = function(left, right, combinerFunction) {
+	var counter,
+		results = [];
+
+	for(counter = 0; counter < Math.min(left.length, right.length); counter++) {
+		// Add code here to apply the combinerFunction to the left and right-hand items in the respective arrays
+    results.push( combinerFunction(left[counter], right[counter]) ) ;
+
+  }
+
+  // console.log(results);
+	return results;
+};
+
+(function ex24() {
 	var movieLists = [
 			{
 				name: "New Releases",
@@ -75,23 +113,26 @@ function() {
 		];
 
 	//------------ COMPLETE THIS EXPRESSION --------------
-	return movieLists.concatMap(function(movieList) {
+	var result = movieLists.concatMap(function(movieList) {
 		return movieList.videos.concatMap(function(video) {
 			return Array.zip(
-				video.boxarts.reduce(function(acc,curr) {
+				video.boxarts.reduce(function(acc, curr) {
 					if (acc.width * acc.height < curr.width * curr.height) {
-				  	  	return acc;
+						return acc;
+					} else {
+						return curr;
 					}
-					else {
-				  		return curr;
-					}
-			  	}),
-				video.interestingMoments.filter(function(interestingMoment) {
-					return interestingMoment.type === "Middle";
 				}),
-			  	function(boxart, interestingMoment) {
-					return {id: video.id, title: video.title, time: interestingMoment.time, url: boxart.url};
-			  	});
-		});
+				video.interestingMoments.filter(function(moment) {
+					return moment.type === "Middle";
+				}),
+				function(boxart, moment) {
+					return {id: video.id, title: video.title, time: moment.time, url: boxart.url }
+				}
+			)
+		})
 	});
-}
+
+	console.log(result);
+	return result;
+})();
